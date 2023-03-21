@@ -31,6 +31,26 @@ function findByArtist(artist, array){
     console.log(results);
 }
 
+//search function searches a criteria from an array and returns all that matches, if no match is found then
+//then an empty array is returned and if nothing is put in search then all items in array is returned 
+function search(entry){
+    let searched = [];
+    
+    for(i=0; i < collection.length; i++){
+        if(collection[i].title === entry){
+            searched.push(collection[i]);
+        } else if (collection[i].artist === entry){
+            searched.push(collection[i]);
+        } else if (collection[i].yearPublished === entry){
+            searched.push(collection[i]);
+        } else if(!entry){
+            return collection;
+        }
+    }
+        return searched;   
+}
+
+
 //adding 6 albums into collections array
 addToCollection('Yellow', 'Coldplay', 2000);
 addToCollection('The Scientist', 'Coldplay', 2002);
@@ -42,8 +62,17 @@ addToCollection('Righteous', 'Juice WRLD', 2020);
 console.log(collection);
 //calling the showCollection function to test
 showCollection(collection);
-//testing findByArtist function, output should be both albums of coldplay in results array
+//testing findByArtist function, output should be both albums of post malone and coldplay in results array
 findByArtist('Post Malone', collection);
 findByArtist('Coldplay', collection);
 //testing findByArtist on failed search, output should be an empty array
 findByArtist('Taylor Swift', collection);
+//testing search with different criteria, title, artist or year published
+console.log(search('Juice WRLD')); 
+console.log(search('Candy Paint'));
+console.log(search(2000));
+console.log(search(2020));
+//testing search for non-existing item from array
+console.log(search('Lil Wayne'));
+//testing search for for nothing typed it the search criteria
+console.log(search());
