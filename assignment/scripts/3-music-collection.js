@@ -1,13 +1,22 @@
 console.log('***** Music Collection *****');
 
 let collection = [];
+let tracks = [
+    {'Yellow': '4:33', 'Trouble': '4:51', 'Sparks': '3:48'}, 
+    {'The Scientist': '5:10', 'In My Place': '3:47', 'Clocks': '5:08'}, 
+    {'White Iverson': '4:17', 'Congratulations': '3:40', 'I Fall Apart': '3:43'}, 
+    {'Candy Paint': '3:48', 'Psycho': '3:41', 'Paranoid': '3:42'}, 
+    {'Wishing Well': '3:15', 'Righteous': '4:02', 'Conversations': '3:02'}, 
+    {'Burn': '3:37', 'Not Enough': '2:52', 'Relocate': '3:28'}
+];
 
 //addToCollection adds albums to collection array with objects
-function addToCollection(title, artist, yearPublished){
+function addToCollection(title, artist, yearPublished, songs){
 let album = {
     title: title,
     artist: artist,
-    yearPublished: yearPublished
+    yearPublished: yearPublished,
+    songs: songs
 };
 collection.push(album);
 console.log(collection[collection.length - 1]);
@@ -31,6 +40,8 @@ function findByArtist(artist, array){
     console.log(results);
 }
 
+
+
 //search function searches a criteria from an array and returns all that matches, if no match is found then
 //then an empty array is returned and if nothing is put in search then all items in array is returned 
 function search(entry){
@@ -52,12 +63,12 @@ function search(entry){
 
 
 //adding 6 albums into collections array
-addToCollection('Yellow', 'Coldplay', 2000);
-addToCollection('The Scientist', 'Coldplay', 2002);
-addToCollection('White Iverson', 'Post Malone', 2016);
-addToCollection('Candy Paint', 'Post Malone', 2018);
-addToCollection('Wishing Well', 'Juice WRLD', 2020);
-addToCollection('Righteous', 'Juice WRLD', 2020);
+addToCollection('Parachutes', 'Coldplay', 2000, tracks[0]);
+addToCollection('A Rush of Blood to the Head', 'Coldplay', 2002, tracks[1]);
+addToCollection('Stoney', 'Post Malone', 2016, tracks[2]);
+addToCollection('Beer Bongs & Bentleys', 'Post Malone', 2018, tracks[3]);
+addToCollection('Legends Never Die', 'Juice WRLD', 2020, tracks[4]);
+addToCollection('Fighting Demons', 'Juice WRLD', 2021, tracks[5]);
 //returning to console what is in collection array so far
 console.log(collection);
 //calling the showCollection function to test
@@ -69,10 +80,11 @@ findByArtist('Coldplay', collection);
 findByArtist('Taylor Swift', collection);
 //testing search with different criteria, title, artist or year published
 console.log(search('Juice WRLD')); 
-console.log(search('Candy Paint'));
+console.log(search('Stoney'));
 console.log(search(2000));
 console.log(search(2020));
 //testing search for non-existing item from array
 console.log(search('Lil Wayne'));
 //testing search for for nothing typed it the search criteria
 console.log(search());
+
