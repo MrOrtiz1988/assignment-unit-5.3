@@ -1,6 +1,7 @@
 console.log('***** Music Collection *****');
 
 let collection = [];
+//each index represents all tracks per album with 3 songs within objects. instructions was confusion but i believe this was the way to go :)
 let tracks = [
     [{name: 'Yellow', duration: '4:33'}, {name: 'Trouble', duration: '4:51'}, {name: 'Sparks', duration: '3:48'}], 
     [{name: 'The Scientist', duration: '5:10'}, {name: 'In My Place', duration: '3:47'}, {name: 'Clocks', duration: '5:08'}], 
@@ -23,9 +24,13 @@ console.log(collection[collection.length - 1]);
 }
 
 //show collection displays each collection formatted like: `TITLE by ARTIST, published in YEAR`.
+//new update now shows a list of each albums tracks to console
 function showCollection(array){
     for(i=0; i < array.length; i++){
-        console.log(array[i].title + ' by ' + array[i].artist + ' published in ' + array[i].yearPublished + '.');
+        console.log(array[i].title + ' by ' + array[i].artist + ' published in ' + array[i].yearPublished + ':');
+        console.log(1, array[i].songs[0].name + ': ' + array[i].songs[0].duration);
+        console.log(2, array[i].songs[1].name + ': ' + array[i].songs[1].duration);
+        console.log(3, array[i].songs[2].name + ': ' + array[i].songs[2].duration);
     }
 }
 
@@ -40,10 +45,10 @@ function findByArtist(artist, array){
     console.log(results);
 }
 
-
-
 //search function searches a criteria from an array and returns all that matches, if no match is found then
 //then an empty array is returned and if nothing is put in search then all items in array is returned 
+//update: last 3 conditionals was to check only for song name, again, was confused on the instructions but i achived the objective
+//im sure it looks sloppy but im not sure how to clean it up
 function search(entry){
     let searched = [];
     
@@ -67,8 +72,7 @@ function search(entry){
         return searched;   
 }
 
-
-//adding 6 albums into collections array
+//adding 6 albums into collections array plus tracks in a nested array
 addToCollection('Parachutes', 'Coldplay', 2000, tracks[0]);
 addToCollection('A Rush of Blood to the Head', 'Coldplay', 2002, tracks[1]);
 addToCollection('Stoney', 'Post Malone', 2016, tracks[2]);
@@ -93,9 +97,7 @@ console.log(search(2020));
 console.log(search('Lil Wayne'));
 //testing search for for nothing typed it the search criteria
 console.log(search());
-
-console.log(collection[0].songs[0].name);
-
+//testing search song only and returns song and its duration only
 console.log(search('Yellow'));
 console.log(search('Burn'));
 
