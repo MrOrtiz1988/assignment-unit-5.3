@@ -2,12 +2,12 @@ console.log('***** Music Collection *****');
 
 let collection = [];
 let tracks = [
-    {'Yellow': '4:33', 'Trouble': '4:51', 'Sparks': '3:48'}, 
-    {'The Scientist': '5:10', 'In My Place': '3:47', 'Clocks': '5:08'}, 
-    {'White Iverson': '4:17', 'Congratulations': '3:40', 'I Fall Apart': '3:43'}, 
-    {'Candy Paint': '3:48', 'Psycho': '3:41', 'Paranoid': '3:42'}, 
-    {'Wishing Well': '3:15', 'Righteous': '4:02', 'Conversations': '3:02'}, 
-    {'Burn': '3:37', 'Not Enough': '2:52', 'Relocate': '3:28'}
+    [{name: 'Yellow', duration: '4:33'}, {name: 'Trouble', duration: '4:51'}, {name: 'Sparks', duration: '3:48'}], 
+    [{name: 'The Scientist', duration: '5:10'}, {name: 'In My Place', duration: '3:47'}, {name: 'Clocks', duration: '5:08'}], 
+    [{name: 'White Iverson', duration: '4:17'}, {name: 'Congratulations', duration: '3:40'}, {name: 'I Fall Apart', duration: '3:43'}], 
+    [{name: 'Candy Paint', duration: '3:48'}, {name: 'Psycho', duration: '3:41'}, {name: 'Paranoid', duration: '3:42'}], 
+    [{name: 'Wishing Well', duration: '3:15'}, {name: 'Righteous', duration: '4:02'}, {name: 'Conversations', duration: '3:02'}], 
+    [{name: 'Burn', duration: '3:37'}, {name: 'Not Enough', duration: '2:52'}, {name: 'Relocate', duration: '3:28'}]
 ];
 
 //addToCollection adds albums to collection array with objects
@@ -56,6 +56,12 @@ function search(entry){
             searched.push(collection[i]);
         } else if(!entry){
             return collection;
+        } else if(collection[i].songs[0].name == entry){
+            searched.push(collection[i].songs[0].name + ': ' + collection[i].songs[0].duration)
+        } else if(collection[i].songs[1].name == entry){
+            searched.push(collection[i].songs[1].name + ': ' + collection[i].songs[1].duration)
+        }else if(collection[i].songs[2].name == entry){
+            searched.push(collection[i].songs[2].name + ': ' + collection[i].songs[2].duration)
         }
     }
         return searched;   
@@ -87,4 +93,9 @@ console.log(search(2020));
 console.log(search('Lil Wayne'));
 //testing search for for nothing typed it the search criteria
 console.log(search());
+
+console.log(collection[0].songs[0].name);
+
+console.log(search('Yellow'));
+console.log(search('Burn'));
 
